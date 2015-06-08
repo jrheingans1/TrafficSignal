@@ -7,19 +7,19 @@ package Thread;
 
 import javax.swing.SwingUtilities;
 
-import Model.NorthSouthTrafficSignalModel;
+import Model.EastWestTrafficSignalModel;
 import View.TrafficSignalLightPanel;
-import View.TrafficSignalPanelSouth;
+import View.TrafficSignalPanelWest;
 
-public class SouthTrafficSignalCycle extends Thread {
+public class WestTrafficSignalCycle extends Thread {
 
     protected boolean isRunning;
     protected boolean isFinished;
 
-    protected TrafficSignalPanelSouth tsPanelSouth;
+    protected TrafficSignalPanelWest tsPanelWest;
 
-    public SouthTrafficSignalCycle(TrafficSignalPanelSouth tsPanelSouth) {
-        this.tsPanelSouth = tsPanelSouth;
+    public WestTrafficSignalCycle(TrafficSignalPanelWest tsPanelWest) {
+        this.tsPanelWest = tsPanelWest;
         this.isRunning = true;
         this.isFinished = false;
     }
@@ -30,9 +30,11 @@ public class SouthTrafficSignalCycle extends Thread {
     @Override
     public void run() {
         while (isRunning) {
-            signalLightOn(tsPanelSouth.getGreenLight(), NorthSouthTrafficSignalModel.GREEN_TIMER);
-            signalLightOn(tsPanelSouth.getYellowLight(), NorthSouthTrafficSignalModel.YELLOW_TIMER);
-            signalLightOn(tsPanelSouth.getRedLight(), NorthSouthTrafficSignalModel.RED_TIMER);
+            signalLightOn(tsPanelWest.getRedLight(), EastWestTrafficSignalModel.RED_TIMER);
+            signalLightOn(tsPanelWest.getGreenLight(), EastWestTrafficSignalModel.GREEN_TIMER);
+            signalLightOn(tsPanelWest.getYellowLight(), EastWestTrafficSignalModel.YELLOW_TIMER);
+            
+
         }
         this.isFinished = true;
     }

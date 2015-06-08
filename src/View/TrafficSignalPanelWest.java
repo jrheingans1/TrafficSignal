@@ -13,9 +13,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import Model.NorthSouthTrafficSignalModel;
+import Model.EastWestTrafficSignalModel;
 
-public final class TrafficSignalPanelNorth {
+public final class TrafficSignalPanelWest {
 
     protected JPanel panel;
 
@@ -23,7 +23,7 @@ public final class TrafficSignalPanelNorth {
     protected TrafficSignalLightPanel yellowLight;
     protected TrafficSignalLightPanel greenLight;
 
-    public TrafficSignalPanelNorth() {
+    public TrafficSignalPanelWest() {
         createPartControl();
     }
 
@@ -32,27 +32,25 @@ public final class TrafficSignalPanelNorth {
 
         redLight = new TrafficSignalLightPanel(Color.RED);
         redLight.setBorder(border);
-        redLight.setPreferredSize(NorthSouthTrafficSignalModel.LIGHT_SIZE);
+        redLight.setPreferredSize(EastWestTrafficSignalModel.LIGHT_SIZE);
 
         yellowLight = new TrafficSignalLightPanel(Color.YELLOW);
         yellowLight.setBorder(border);
-        yellowLight.setPreferredSize(NorthSouthTrafficSignalModel.LIGHT_SIZE);
+        yellowLight.setPreferredSize(EastWestTrafficSignalModel.LIGHT_SIZE);
 
         greenLight = new TrafficSignalLightPanel(Color.GREEN);
         greenLight.setBorder(border);
-        greenLight.setPreferredSize(NorthSouthTrafficSignalModel.LIGHT_SIZE);
+        greenLight.setPreferredSize(EastWestTrafficSignalModel.LIGHT_SIZE);
 
         panel = new JPanel();
 
-
         panel.setLayout(new FlowLayout());
-        panel.setPreferredSize(new Dimension(NorthSouthTrafficSignalModel.LIGHT_SIZE.width + 50,
-                NorthSouthTrafficSignalModel.LIGHT_SIZE.height * 3 + 25));
+        panel.setPreferredSize(new Dimension(EastWestTrafficSignalModel.LIGHT_SIZE.width + 50,
+                EastWestTrafficSignalModel.LIGHT_SIZE.height * 3 + 25));
 
         panel.add(redLight);
         panel.add(yellowLight);
         panel.add(greenLight);
-
 
     }
 

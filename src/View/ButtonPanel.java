@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 
 import Thread.NorthTrafficSignalCycle;
 import Thread.SouthTrafficSignalCycle;
+import Thread.EastTrafficSignalCycle;
+import Thread.WestTrafficSignalCycle;
 
 public final class ButtonPanel {
 
@@ -24,14 +26,20 @@ public final class ButtonPanel {
 
     protected NorthTrafficSignalCycle northThread;
     protected SouthTrafficSignalCycle southThread;
+    protected WestTrafficSignalCycle westThread;
+    protected EastTrafficSignalCycle eastThread;
 
     protected TrafficSignalPanelNorth tsPanelNorth;
     protected TrafficSignalPanelSouth tsPanelSouth;
+    protected TrafficSignalPanelWest tsPanelWest;
+    protected TrafficSignalPanelEast tsPanelEast;
 
     public ButtonPanel() {
         this.northThread = null;
         this.southThread = null;
-        createPartControl();
+        this.eastThread = null;
+        this.westThread = null;
+        this.createPartControl();
     }
 
     protected void createPartControl() {
@@ -48,10 +56,23 @@ public final class ButtonPanel {
             tsPanelSouth.getYellowLight().setLightOn(false);
             tsPanelSouth.getGreenLight().setLightOn(false);
 
+            tsPanelEast.getRedLight().setLightOn(false);
+            tsPanelEast.getYellowLight().setLightOn(false);
+            tsPanelEast.getGreenLight().setLightOn(false);
+
+            tsPanelWest.getRedLight().setLightOn(false);
+            tsPanelWest.getYellowLight().setLightOn(false);
+            tsPanelWest.getGreenLight().setLightOn(false);
+
             northThread = new NorthTrafficSignalCycle(tsPanelNorth);
             southThread = new SouthTrafficSignalCycle(tsPanelSouth);
+            eastThread = new EastTrafficSignalCycle(tsPanelEast);
+            westThread = new WestTrafficSignalCycle(tsPanelWest);
+
             northThread.start();
             southThread.start();
+            eastThread.start();
+            westThread.start();
         });
 
         panel.add(startButton);
@@ -65,7 +86,7 @@ public final class ButtonPanel {
             tsPanelSouth.getRedLight().setLightOn(true);
             tsPanelSouth.getYellowLight().setLightOn(false);
             tsPanelSouth.getGreenLight().setLightOn(false);
-            
+
             northThread.stopRunning();
             southThread.stopRunning();
         });
@@ -98,13 +119,20 @@ public final class ButtonPanel {
 //        this.tsPanelSouth = tsPanelSouth;
 //
 //    }
-
     public void setTrafficSignalPanelNorth(TrafficSignalPanelNorth tsPanelNorth) {
         this.tsPanelNorth = tsPanelNorth;
     }
 
     public void setTrafficSignalPanelSouth(TrafficSignalPanelSouth tsPanelSouth) {
         this.tsPanelSouth = tsPanelSouth;
+    }
+
+    public void setTrafficSignalPanelWest(TrafficSignalPanelWest tsPanelWest) {
+        this.tsPanelWest = tsPanelWest;
+    }
+
+    public void setTrafficSignalPanelEast(TrafficSignalPanelEast tsPanelEast) {
+        this.tsPanelEast = tsPanelEast;
     }
 
     public JPanel getPanel() {

@@ -7,9 +7,9 @@ package Model;
 
 import java.awt.Dimension;
 
-public class TrafficSignalModel {
+public class NorthSouthTrafficSignalModel {
 
-    public static final int RED_TIMER = 2;
+    public static final int RED_TIMER = 4;
     public static final int YELLOW_TIMER = 1;
     public static final int GREEN_TIMER = 2;
 

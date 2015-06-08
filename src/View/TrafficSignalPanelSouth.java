@@ -13,7 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-import Model.TrafficSignalModel;
+import Model.NorthSouthTrafficSignalModel;
 
 public final class TrafficSignalPanelSouth {
 
@@ -32,21 +32,20 @@ public final class TrafficSignalPanelSouth {
 
         redLight = new TrafficSignalLightPanel(Color.RED);
         redLight.setBorder(border);
-        redLight.setPreferredSize(TrafficSignalModel.LIGHT_SIZE);
+        redLight.setPreferredSize(NorthSouthTrafficSignalModel.LIGHT_SIZE);
 
         yellowLight = new TrafficSignalLightPanel(Color.YELLOW);
         yellowLight.setBorder(border);
-        yellowLight.setPreferredSize(TrafficSignalModel.LIGHT_SIZE);
+        yellowLight.setPreferredSize(NorthSouthTrafficSignalModel.LIGHT_SIZE);
 
         greenLight = new TrafficSignalLightPanel(Color.GREEN);
         greenLight.setBorder(border);
-        greenLight.setPreferredSize(TrafficSignalModel.LIGHT_SIZE);
+        greenLight.setPreferredSize(NorthSouthTrafficSignalModel.LIGHT_SIZE);
 
         panel = new JPanel();
         panel.setLayout(new FlowLayout());
-        panel.setPreferredSize(
-                new Dimension(TrafficSignalModel.LIGHT_SIZE.width + 50,
-                        TrafficSignalModel.LIGHT_SIZE.height * 3 + 25));
+        panel.setPreferredSize(new Dimension(NorthSouthTrafficSignalModel.LIGHT_SIZE.width + 50,
+                NorthSouthTrafficSignalModel.LIGHT_SIZE.height * 3 + 25));
 
         panel.add(redLight);
         panel.add(yellowLight);
